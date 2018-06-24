@@ -96,4 +96,9 @@ public class JavaDBDao {
         Connection conn = DBHelper.getConnection();
         return getDimensionValuesByType(conn, "province");
     }
+
+    public static Map<String, Integer> getSearchMap() {
+        Connection conn = DBHelper.getConnection();
+        return getDimensionValuesByType(conn, "Search-engine");
+    }
 }

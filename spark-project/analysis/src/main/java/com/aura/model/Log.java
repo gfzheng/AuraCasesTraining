@@ -15,6 +15,7 @@ public class Log implements Serializable {
     @JsonProperty("ContentId") private long contentId;
     @JsonProperty("Url") private String url;
     @JsonProperty("Title") private String title;
+    @JsonProperty("SearchEngine") private String searchengine;
     @JsonProperty("Wd") private Wd wd;
 
     public Log() {}
@@ -106,6 +107,14 @@ public class Log implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getSearchEngine() {
+        return searchengine;
+    }
+
+    public void setSearchengine(String se) {
+        this.searchengine = se;
     }
 
     public Wd getWd() {

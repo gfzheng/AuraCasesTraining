@@ -58,7 +58,8 @@ abstract public class LogAnalysis {
             .add("ip", "string", true)
             .add("country", "string", true)
             .add("area", "string", true)
-            .add("ts", "long", true);
+            .add("ts", "long", true)
+            .add("searchengine", "string", true);
 
     protected Dataset<Row> toDataFrame(JavaRDD<Log> logs) {
         JavaRDD<Row> rowsRDD = logs.map(log -> RowFactory.create(
@@ -69,7 +70,8 @@ abstract public class LogAnalysis {
                 log.getIp(),
                 log.getCountry(),
                 log.getArea(),
-                log.getTs())
+                log.getTs(),
+                log.getSearchEngine())
         );
         return spark.createDataFrame(rowsRDD, schema);
     }

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/home/bigdata/hadoop-2.7.3/sbin/mr-jobhistory-daemon.sh stop historyserver
+$HADOOP_HOME/sbin/mr-jobhistory-daemon.sh stop historyserver
 

@@ -25,4 +25,4 @@ export JAVA_OPTS="-Xms100m -Xmx200m -Dcom.sun.management.jmxremote"
 
 # Foll. classpath will be included in Flume's classpath.
 # Note that the Flume conf directory is always included in the classpath.
-FLUME_CLASSPATH="$HADOOP_HOME/share/hadoop/common/hadoop-common-2.7.3.jar"   # Example:  "path1;path2;path3"
+FLUME_CLASSPATH="$HADOOP_HOME/share/hadoop/common/hadoop-common-2.7.5.jar"   # Example:  "path1;path2;path3"

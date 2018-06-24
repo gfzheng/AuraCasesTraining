@@ -77,7 +77,7 @@ object Config {
     System.out.println(Config.brokerList)
   }
 
-  try {
+  {
     var config: PropertiesConfiguration = null
     try {
       config = new PropertiesConfiguration("aura.properties")

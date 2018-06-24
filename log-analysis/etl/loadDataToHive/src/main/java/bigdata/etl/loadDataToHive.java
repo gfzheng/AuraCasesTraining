@@ -19,7 +19,7 @@ public class loadDataToHive {
       System.exit(1);
     }
     Connection con =
-        DriverManager.getConnection("jdbc:hive2://bigdata:10000/default", "bigdata", "bigdata");
+        DriverManager.getConnection("jdbc:hive2://c7402:10000/default", "vagrant", "vagrant");
     Statement stmt = con.createStatement();
     String sql = String.format(LOAD_CMD, dataDir, date, hour_minute);
     stmt.execute(sql);

@@ -18,7 +18,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://bigdata:9000</value>
+      <value>hdfs://c7401:9000</value>
   </property>
   <property>
     <name>hadoop.tmp.dir</name>

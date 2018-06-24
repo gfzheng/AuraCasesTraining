@@ -3,7 +3,7 @@
 
 import random,sys
 
-BRAND_FILE="/home/bigdata/datasource/brand.list"
+BRAND_FILE="./brand.list"
 BRAND={"computer":("APPLE","HP","ACER","LENOVO","DELL","SONY","ASUS"),"telephone":("IPHONE","SAMSUNG","HTC","MOTOROLA","HUAWEI","OPPO","VIVO","XIAOMI","MEIZU"),"television":("HISENSE","SAMSUNG","SKYWORTH","SHARP","HAIER","PHILIPS","TCL"),"sports":("NIKE","ADIDAS","LINING","PUMA","ANTA","MIZUNO","KAPPA","NB","PEAK","361"),"food":("MENGNIU","YILI","GUANGMING","SANYUAN","WULIANGYE","MOUTAI","HONGXING","NIULANSHAN","LANGJIU"),"clothes":("ZARA","HLA","UNIQLO","PEACEBIRD","GXG","SELECTED","SEMIR","SEPTWOLVES","CAMEL"),"cosmetic":("LOREAL","NIVEA","KANS","DHC","CLINIQUE","INNISFREE","MEIFUBAO","OLAY","LANCOME")}
 
 def get_one_brand(category_list,id):

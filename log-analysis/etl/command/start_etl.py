@@ -3,10 +3,14 @@
 
 import sys,os,time
 
-INTPUT_PATH="hdfs://bigdata:9000/flume/record/"
-OUTPUT_PATH="hdfs://bigdata:9000/etl/record/"
-LOAD_CMD="java -cp /home/bigdata/etl/etl-1.0-SNAPSHOT-jar-with-dependencies.jar bigdata.etl.loadDataToHive %s  %s  %s"
-HADOOP_CMD="hadoop jar /home/bigdata/hadoop-2.7.3/share/hadoop/tools/lib/hadoop-streaming-2.7.3.jar -D mapred.reduce.tasks=0 -D mapred.map.tasks=1  -input %s -output %s -mapper /home/bigdata/etl/etl.py -file /home/bigdata/etl/etl.py"
+INTPUT_PATH="hdfs://c7401:9000/flume/record/"
+OUTPUT_PATH="hdfs://c7401:9000/etl/record/"
+LOAD_CMD="java -cp ../loadDataToHive/target/etl-1.0-SNAPSHOT-jar-with-dependencies.jar \
+bigdata.etl.loadDataToHive %s  %s  %s"
+HADOOP_CMD="hadoop jar /usr/local/hadoop-2.7.5/share/hadoop/tools/lib/hadoop-streaming-2.7.5.jar \
+-D mapred.reduce.tasks=0 -D mapred.map.tasks=1  -input %s -output %s \
+-mapper /bigdata/git/AuraCasesTraining/log-analysis/etl/command/etl.py \
+-file /bigdata/git/AuraCasesTraining/log-analysis/etl/command/etl.py"
 
 def getCurrentYmdHM():
     time_struct=time.localtime(time.time()-60*10)
@@ -46,7 +50,11 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         Ymd=sys.argv[1]
         HM=sys.argv[2]
-        subPath=Ymd+"/"+HM
-        startETLForPath(subPath)
+        timestring = Ymd + " " + HM
+        t = time.mktime(time.strptime(timestring, '%Y-%m-%d %H%M'))
+        for index in range(40):
+            subPath = time.strftime('%Y-%m-%d/%H%M',time.localtime(t))
+            startETLForPath(subPath)
+            t = t + 600
     else:
         startETL()

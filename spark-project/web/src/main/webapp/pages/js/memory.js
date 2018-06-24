@@ -108,7 +108,27 @@ function getOptionFlow(title, types, days, datas) {
 			        }
 		        },
 	            data:datas[2]
-	        }
+	        },
+            {
+                name: types[3],
+                type:'line',
+                symbol: 'emptyCircle',
+                symbolSize: 10,
+                smooth: true,
+                markPoint: {
+                    data: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
+                    ]
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#ee8acd'
+                    }
+                },
+                data:datas[3]
+            }
+
 	    ]
 	};
 	return option;

@@ -100,14 +100,14 @@ HADOOP_HOME=/home/bigdata/hadoop-2.7.3
     </property>
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://bigdata:9000</value>
+        <value>hdfs://c7401:9000</value>
     </property>
 ```    
 3）metastore的端口
 ```xml
    <property>
         <name>hive.metastore.uris</name>
-        <value>thrift://bigdata:9083</value>
+        <value>thrift://c7402:9083</value>
     </property>
 ```    
 4）HiveServer2的端口

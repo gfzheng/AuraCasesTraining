@@ -86,8 +86,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		ips.push(item.ip);
 	    		times.push(item.time);
 	    	})
-	    	var types = ["页面浏览量","访问者数","访问IP数"]
-	    	var datas = [pvs,uvs,ips];
+	    	var types = ["页面浏览量","访问者数","访问IP数","访问时长"]
+	    	var datas = [pvs,uvs,ips,times];
 	    	var option = getOptionFlow("流量统计", types, days, datas);
 			chartFlow.setOption(option);
 		});

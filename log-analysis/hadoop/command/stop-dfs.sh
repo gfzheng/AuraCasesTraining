@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/home/bigdata/hadoop-2.7.3/sbin/stop-dfs.sh
+$HADOOP_HOME/sbin/stop-dfs.sh

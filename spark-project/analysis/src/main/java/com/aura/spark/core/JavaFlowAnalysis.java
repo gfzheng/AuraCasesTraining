@@ -56,8 +56,17 @@ public class JavaFlowAnalysis extends LogAnalysis {
     }
 
     private JavaPairRDD<String, Long> sumTotalTime(JavaRDD<Log> logs) {
-        // TODO add your code here
-        return null;
+        JavaPairRDD<String, Long> userTimes = logs
+                .mapToPair(
+                        log -> new Tuple2<>(toDay(log.getTs()) + ":" + log.getUuid(), log.getTs()))
+                .groupByKey()
+                .mapValues(new TimeIntervalAggFunction());
+        JavaPairRDD<String, Long> userTotalTime = userTimes
+                .mapToPair(
+                        s -> new Tuple2<>(s._1.split(":")[0], s._2)
+                )
+                .reduceByKey((t1, t2) -> t1 + t2);
+        return userTotalTime;
     }
 
     /**

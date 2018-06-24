@@ -4,5 +4,5 @@ create external table if not exists brand_dimension (
  brand STRING
 )ROW FORMAT DELIMITED
  FIELDS TERMINATED BY ','
- location 'hdfs://bigdata:9000/warehouse/brand_dimension'
+ location 'hdfs://c7401:9000/warehouse/brand_dimension'
  ;

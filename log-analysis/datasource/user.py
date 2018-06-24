@@ -4,7 +4,7 @@
 from faker import Factory
 import random
 import sys
-USER_FILE="/home/bigdata/datasource/user.list"
+USER_FILE="./user.list"
 PROVINCE="BeiJing,ShangHai,TianJin,ChongQing,XiangGang,Aomen,AnHui,FuJian,GuangDong,GuangXi,GuiZhou,GanSu,HaiNan,HeBei,HeNan,HeiLongJiang,HuBei,HuNan,JiLin,JiangSu,JiangXi,LiaoNing,NeiMengGu,NingXia,QingHai,ShanXi1,ShanXi3,ShanDong,SiChuan,TaiWan,XiZang,XinJiang,YunNan,ZheJiang"
 PROVINCE_LIST=PROVINCE.split(",");
 def get_one_user(fake,id):
