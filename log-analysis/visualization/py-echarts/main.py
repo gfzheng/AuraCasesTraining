@@ -13,8 +13,7 @@ def index():
     presto=Presto_Query()
     age_price_tuples=presto.query_age_price()
     age_dict=presto.getAgeDict(age_price_tuples)
-    chart1 = Chart().pie("饼图", data=age_dict
-                         )
+    chart1 = Chart().pie("饼图", data=age_dict)
 
     tuples=presto.query_brand_price()
     keys=presto.getKeys(tuples)
@@ -28,8 +27,7 @@ def index():
     province_price=redis.query_province()
     china_province_price=redis.get_province_price(province_price)
     print china_province_price
-    chart3= Chart()\
-             .map(china_province_price)
+    chart3 = Chart().map(china_province_price)
 
     render = {
         "title": u"电商双十一大数据日志分析系统",

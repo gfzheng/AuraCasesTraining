@@ -3,7 +3,7 @@
 
 from pyhive import presto
 
-PRESTO_SERVER = {'host': 'bigdata', 'port': 8080, 'catalog': 'hive', 'schema': 'default'}
+PRESTO_SERVER = {'host': 'c7402', 'port': 8080, 'catalog': 'hive', 'schema': 'default'}
 BRAND_PRICE_QUERY="select brand,sum(price) as totalPrice from record join brand_dimension on record.bid=brand_dimension.bid group by brand_dimension.brand order by totalPrice desc limit 10"
 
 AGE_PRICE_QUERY="select cast((year(CURRENT_DATE)-year(birth)) as integer) as age,sum(price) as totalPrice from record join user_dimension on record.uid=user_dimension.uid group by cast((year(CURRENT_DATE)-year(birth)) as integer) order by totalPrice desc"

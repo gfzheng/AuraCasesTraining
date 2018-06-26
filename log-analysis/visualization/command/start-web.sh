@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python /home/bigdata/visualization/py-echarts/main.py
+python2.7 ../py-echarts/main.py

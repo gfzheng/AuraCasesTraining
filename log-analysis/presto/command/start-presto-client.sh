@@ -1,3 +1,3 @@
 #!/bin/bash
 
-presto --server localhost:8080 --catalog hive --schema default
+presto --server c7402:8080 --catalog hive --schema default
