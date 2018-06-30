@@ -4,7 +4,6 @@ import com.aura.config.Config
 import com.aura.dao.DimensionDao
 import com.aura.entity.Dimension
 import com.aura.util.SparkUtil
-
 import org.apache.spark.broadcast.Broadcast
 
 /**

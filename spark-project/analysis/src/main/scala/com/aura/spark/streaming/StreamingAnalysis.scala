@@ -1,22 +1,21 @@
 package com.aura.spark.streaming
 
-import kafka.serializer.StringDecoder
-
-import org.apache.spark.streaming._
-import org.apache.spark.streaming.dstream._
-import org.apache.spark.streaming.kafka._
-import org.apache.spark.broadcast.Broadcast
-import com.alibaba.fastjson.JSON
 import java.sql.Connection
 import java.util.Calendar
 
-import scala.util.control.NonFatal
-
+import com.alibaba.fastjson.JSON
 import com.aura.config.Config
 import com.aura.dao.{ContentDao, DimensionDao}
 import com.aura.db.DBHelper
 import com.aura.entity.{Content, Dimension, Log}
 import com.aura.util.{SparkUtil, StringUtil}
+import kafka.serializer.StringDecoder
+import org.apache.spark.broadcast.Broadcast
+import org.apache.spark.streaming._
+import org.apache.spark.streaming.dstream._
+import org.apache.spark.streaming.kafka._
+
+import scala.util.control.NonFatal
 
 object StreamingAnalysis {
 

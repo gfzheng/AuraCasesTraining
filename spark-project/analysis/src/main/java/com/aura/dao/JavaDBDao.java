@@ -15,6 +15,10 @@ public class JavaDBDao {
             "INSERT INTO sparkcore_content_data(contentid,`day`,pv,uv) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE pv = values(pv),uv = values(uv)";
     private static final String SAVE_CONTENT_DETAIL =
             "INSERT INTO sparkcore_content_detail(contentid,url,title) VALUES (?,?,?) ON DUPLICATE KEY UPDATE url = values(url),title = values(title)";
+    private static final String SAVE_STREAMING_CONTENT_COUNT =
+            "INSERT INTO streaming_content_data(contentid,`second`,pv,uv) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE pv = values(pv),uv = values(uv)";
+    private static final String SAVE_STREAMING_CONTENT_DETAIL =
+            "INSERT INTO streaming_content_detail(contentid,url,title) VALUES (?,?,?) ON DUPLICATE KEY UPDATE url = values(url),title = values(title)";
     private static final String SAVE_DIMENSION_COUNT =
             "INSERT INTO sparkcore_dimension_data(dimeid,`day`,pv,uv,ip) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE pv = values(pv),uv = values(uv),ip = values(ip)";
     private static final String UPDATE_DIMENSION_TIME =
@@ -47,6 +51,14 @@ public class JavaDBDao {
 
     public static void saveContentDetail(Connection conn, long contentId, String url, String title) throws SQLException {
         execute(conn, SAVE_CONTENT_DETAIL, contentId, url, title);
+    }
+
+    public static void saveStreamingContentCount(Connection conn, long contentId, int sec, long pv, long uv) throws SQLException {
+        execute(conn, SAVE_STREAMING_CONTENT_COUNT, contentId, sec, pv, uv);
+    }
+
+    public static void saveStreamingContentDetail(Connection conn, long contentId, String url, String title) throws SQLException {
+        execute(conn, SAVE_STREAMING_CONTENT_DETAIL, contentId, url, title);
     }
 
     public static void saveDimensionCount(Connection conn, int dimId, String day, long pv, long uv, long ip) throws SQLException {

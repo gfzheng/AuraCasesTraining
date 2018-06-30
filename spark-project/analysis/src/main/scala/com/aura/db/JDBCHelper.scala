@@ -1,6 +1,7 @@
 package com.aura.db
 
 import java.sql.{Connection, DriverManager}
+
 import com.aura.config.Config
 
 object JDBCHelper {

@@ -1,8 +1,9 @@
 package com.aura.dao
 
-import scala.collection.mutable.ListBuffer
 import com.aura.basic.BasicSimpleDao
 import com.aura.entity.Dimension
+
+import scala.collection.mutable.ListBuffer
 
 /**
   * Created by An on 2016/11/25.

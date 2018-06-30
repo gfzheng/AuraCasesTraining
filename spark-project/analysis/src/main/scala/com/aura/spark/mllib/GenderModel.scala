@@ -1,13 +1,13 @@
 package com.aura.spark.mllib
 
-import org.apache.spark.mllib.classification.SVMWithSGD
-import org.apache.spark.mllib.feature.HashingTF
-import org.apache.spark.mllib.regression.LabeledPoint
-import scala.collection.mutable.ListBuffer
-
 import com.aura.entity.Training
 import com.aura.util.{FileUtil, SparkUtil}
 import org.apache.hadoop.fs.{FileSystem, Path}
+import org.apache.spark.mllib.classification.SVMWithSGD
+import org.apache.spark.mllib.feature.HashingTF
+import org.apache.spark.mllib.regression.LabeledPoint
+
+import scala.collection.mutable.ListBuffer
 
 /**
   * 支持向量积算法

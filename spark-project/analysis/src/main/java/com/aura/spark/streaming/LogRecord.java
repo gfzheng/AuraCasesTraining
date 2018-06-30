@@ -23,6 +23,17 @@ public class LogRecord implements Serializable {
         this.area = area;
     }
 
+    public LogRecord(int second, String uuid, String ip, String url, String title, long contentId, String area) {
+        this.second = second;
+        this.uuid = uuid;
+        this.ip = ip;
+        this.url = url;
+        this.title = title;
+        this.contentId = contentId;
+        this.area = area;
+    }
+
+
     public int getDimId() {
         return dimId;
     }

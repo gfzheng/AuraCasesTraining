@@ -1,11 +1,12 @@
 package com.aura.basic
 
-import java.sql.{Connection, PreparedStatement, ResultSet, ResultSetMetaData}
 import java.lang.reflect.Method
-import org.apache.commons.lang3.StringUtils
-import scala.collection.mutable.ListBuffer
+import java.sql.{Connection, PreparedStatement, ResultSet, ResultSetMetaData}
 
 import com.aura.db.DBHelper
+import org.apache.commons.lang3.StringUtils
+
+import scala.collection.mutable.ListBuffer
 
 object BasicDao {
   

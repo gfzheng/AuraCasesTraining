@@ -1,9 +1,9 @@
 package com.aura.spark.core;
 
-import com.aura.dao.JavaDBDao;
 import com.aura.db.DBHelper;
-import com.aura.model.Log;
+import com.aura.dao.JavaDBDao;
 import com.aura.util.StringUtil;
+import com.aura.model.Log;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;

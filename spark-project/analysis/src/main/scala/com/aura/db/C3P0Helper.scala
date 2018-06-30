@@ -1,6 +1,7 @@
 package com.aura.db
 
 import java.sql.Connection
+
 import com.aura.config.Config
 import com.mchange.v2.c3p0.ComboPooledDataSource
 

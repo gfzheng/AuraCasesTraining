@@ -4,7 +4,6 @@ import com.aura.config.Config
 import com.aura.dao.TrainingDao
 import com.aura.entity.Training
 import com.aura.util.{FileUtil, SparkUtil}
-
 import org.apache.spark.mllib.classification.NaiveBayesModel
 import org.apache.spark.mllib.feature.HashingTF
 

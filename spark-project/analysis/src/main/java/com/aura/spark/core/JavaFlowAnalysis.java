@@ -3,7 +3,6 @@ package com.aura.spark.core;
 import com.aura.dao.JavaDBDao;
 import com.aura.db.DBHelper;
 import com.aura.model.Log;
-import static com.aura.spark.core.ToDayFunction.toDay;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.Function;
@@ -16,6 +15,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static com.aura.spark.core.ToDayFunction.toDay;
 
 public class JavaFlowAnalysis extends LogAnalysis {
 
@@ -84,7 +85,7 @@ public class JavaFlowAnalysis extends LogAnalysis {
 
 class TimeIntervalAggFunction implements Function<Iterable<Long>, Long> {
     @Override
-    public Long call(Iterable<Long> itr) throws Exception {
+    public Long call(Iterable<Long> itr) {
         List<Long> times = new ArrayList<Long>();
         itr.forEach(times::add);
         long sum = 10;

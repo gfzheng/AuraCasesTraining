@@ -1,7 +1,7 @@
 package com.aura.util
 
-import java.util.Calendar
 import java.text.SimpleDateFormat
+import java.util.Calendar
 
 object DateUtil {
   

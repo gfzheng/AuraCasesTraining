@@ -1,7 +1,6 @@
 package com.aura.spark.mllib
 
 import com.aura.util.SparkUtil
-
 import org.apache.spark.mllib.classification.SVMModel
 import org.apache.spark.mllib.feature.HashingTF
 

@@ -121,7 +121,7 @@ public class Log implements Serializable {
         return wd;
     }
 
-    public void setWd(Wd wd) {
-        this.wd = wd;
+    public void setWd(Wd w) {
+        this.wd = w;
     }
 }

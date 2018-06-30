@@ -1,8 +1,8 @@
 package com.aura.entity
 
-import scala.beans.BeanProperty
-
 import com.aura.util.StringUtil
+
+import scala.beans.BeanProperty
 
 class Log extends Serializable {
   @BeanProperty var Ts: Long = 0L

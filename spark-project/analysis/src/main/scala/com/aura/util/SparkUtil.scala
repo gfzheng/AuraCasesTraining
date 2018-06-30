@@ -1,11 +1,9 @@
 package com.aura.util
 
 import com.alibaba.fastjson.JSON
-import com.aura.config.Config
 import com.aura.entity.{Dimension, Log}
-
-import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
 
 object SparkUtil {
   /**

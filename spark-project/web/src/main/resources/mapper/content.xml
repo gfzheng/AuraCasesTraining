@@ -5,11 +5,12 @@
 	<!-- Spark Streaming 地区稿件 -->
 	<select id="getStreamProvinceContentList" resultType="Content">
     	SELECT tmp.contentid,uv `value`,url,title FROM
-		(SELECT contentid,SUM(uv) uv FROM streaming_content_data tcd
+        (SELECT contentId,SUM(uv) uv FROM streaming_content_data tcd
 		<where>
 			second between #{startSecond} and #{endSecond}
-		</where> 
-		GROUP BY contentId ORDER BY uv DESC LIMIT 15)tmp JOIN streaming_content_detail tcd ON tmp.contentid = tcd.contentid
+		</where>
+        GROUP BY contentId ORDER BY uv DESC LIMIT 15) tmp JOIN streaming_content_detail tcd ON tmp.contentid =
+        tcd.contentid
 	</select>
 	<!-- Spark Core 稿件排行 -->
 	<select id="getMemoryContentList" resultType="Content">

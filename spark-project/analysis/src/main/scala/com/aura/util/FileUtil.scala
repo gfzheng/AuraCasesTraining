@@ -3,11 +3,11 @@ package com.aura.util
 import java.io.{BufferedReader, FileReader}
 import java.util.{Collection, Iterator, StringTokenizer}
 
+import com.aura.entity.Training
 import org.ansj.app.keyword.{KeyWordComputer, Keyword}
+
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.io.Source
-
-import com.aura.entity.Training
 
 object FileUtil {
 	/**

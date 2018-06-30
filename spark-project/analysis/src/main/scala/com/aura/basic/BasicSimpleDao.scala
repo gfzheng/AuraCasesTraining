@@ -1,9 +1,10 @@
 package com.aura.basic
 
 import java.sql.Connection
-import scala.collection.mutable.ListBuffer
 
 import com.aura.db.DBHelper
+
+import scala.collection.mutable.ListBuffer
 
 object BasicSimpleDao {
   

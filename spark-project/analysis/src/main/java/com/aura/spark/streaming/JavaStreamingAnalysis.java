@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.aura.dao.JavaDBDao;
 import com.aura.db.DBHelper;
 import com.aura.model.Log;
+import com.aura.util.StringUtil;
+import com.aura.spark.core.JavaContentAnalysis;
 import com.google.common.collect.Sets;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
@@ -19,6 +21,8 @@ import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaPairInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka.KafkaUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JavaStreamingAnalysis {
+    private static final Logger LOG = LoggerFactory.getLogger(JavaContentAnalysis.class);
 
     private Config config;
     private JavaStreamingContext ssc;
@@ -112,7 +117,51 @@ public class JavaStreamingAnalysis {
     }
 
     private void processByContent(JavaDStream<Log> logs) {
-        // TODO add your code here
+        JavaDStream<LogRecord> records = logs
+                .filter(log -> log.getClearTitle() != null && log.getClearTitle().length() > 5)
+                .map(log -> {
+                    return new LogRecord(
+                            secondsOfDay(log.getTs()),
+                            log.getUuid(),
+                            log.getIp(),
+                            log.getUrl(),
+                            log.getClearTitle(),
+                            log.getContentId(),
+                            log.getArea());
+                });
+        records.foreachRDD(rdd -> {
+            SparkSession spark = SparkSession.builder()
+                    .config(rdd.context().getConf())
+                    .getOrCreate();
+            Dataset<Row> df = spark.createDataFrame(rdd, LogRecord.class);
+            df.createOrReplaceTempView("logs");
+            Dataset<Row> contentCounts = spark.sql("SELECT contentId, second, COUNT(1) AS pv, COUNT(DISTINCT uuid) AS uv FROM logs GROUP BY contentId,second");
+            contentCounts.foreachPartition(rows -> {
+                Connection conn = DBHelper.getConnection();
+                rows.forEachRemaining(row -> {
+                    try {
+                        JavaDBDao.saveStreamingContentCount(conn, row.getLong(0), row.getInt(1), row.getLong(2), row.getLong(3));
+                    } catch (SQLException e) {
+                        LOG.error("save streaming content count failed", e);
+                    }
+                });
+                conn.close();
+            });
+            Dataset<Row> contentDetails = spark.sql("SELECT DISTINCT contentId, url, title FROM logs");
+            contentDetails.foreachPartition(rows -> {
+                Connection conn = DBHelper.getConnection();
+                rows.forEachRemaining(row -> {
+                    try {
+                        String url = StringUtil.limitString(row.getString(1), 500, "utf8");
+                        String title = StringUtil.limitString(row.getString(2), 500, "utf8");
+                        JavaDBDao.saveStreamingContentDetail(conn, row.getLong(0), url, title);
+                    } catch (SQLException e) {
+                        LOG.error("save content detail failed", e);
+                    }
+                });
+                conn.close();
+            });
+        });
     }
 
     public static int secondsOfDay(long seconds) {
